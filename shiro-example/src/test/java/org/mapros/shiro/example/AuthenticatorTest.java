@@ -7,10 +7,10 @@ import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
+import org.apache.shiro.util.ThreadContext;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.List;
 
 /**
  * Created by HP on 2016/10/10.
@@ -34,13 +34,13 @@ public class AuthenticatorTest {
     @Test
     public void testFirstSuccessfulStrategy() throws Exception {
         doLogin("classpath:shiro.authenticator.first.success.ini", "mapros", "984138");
-        Assert.assertEquals(1,SecurityUtils.getSubject().getPrincipals().asList().size());
+        Assert.assertEquals(1, SecurityUtils.getSubject().getPrincipals().asList().size());
     }
 
     @Test
     public void testAtLeastOneSuccessfulStrategy() throws Exception {
         doLogin("classpath:shiro.authenticator.atLeastOne.success.ini", "mapros", "984138");
-        Assert.assertEquals(2,SecurityUtils.getSubject().getPrincipals().asList().size());
+        Assert.assertEquals(2, SecurityUtils.getSubject().getPrincipals().asList().size());
     }
 
     private void doLogin(String ini, String username, String password) {
@@ -50,5 +50,10 @@ public class AuthenticatorTest {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         subject.login(token);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        ThreadContext.unbindSubject();
     }
 }
