@@ -8,6 +8,7 @@
         <module>shiro-example</module>
         <module>shiro-authority</module>
         <module>shiro-ini</module>
+        <module>shiro-encrypt</module>
     </modules>
     <properties>
         <junit.version>4.12</junit.version>
