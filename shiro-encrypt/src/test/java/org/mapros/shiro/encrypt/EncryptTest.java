@@ -121,7 +121,7 @@ public class EncryptTest {
         hashService.setPrivateSalt(new SimpleByteSource("984138"));
         //generate public salt
         hashService.setGeneratePublicSalt(true);
-        //set randomumber generatortestHashService
+        //set random number generator
         hashService.setRandomNumberGenerator(new SecureRandomNumberGenerator());
         //set hash iterations value 1
         hashService.setHashIterations(1);
