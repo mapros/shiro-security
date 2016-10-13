@@ -16,6 +16,7 @@
         <logging.version>1.2</logging.version>
         <mysql.version>5.1.38</mysql.version>
         <druid.version>1.0.26</druid.version>
+        <ehcache.version>2.6.6</ehcache.version>
     </properties>
     <packaging>pom</packaging>
     <dependencyManagement>
@@ -44,6 +45,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache-core</artifactId>
+                <version>${ehcache.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
